@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      Des composants React multi-plateformes avec une architecture monorepo
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Partarger plus facilement vos composants React entre différents packages/plateforme via une architecture monorepo"
+    />
+    <link
+      rel="stylesheet"
+      href="node_modules/@shower/ribbon/styles/styles.css"
+    />
+    <style>
+      .shower {
+        --slide-ratio: calc(16 / 9);
+      }
+      .slide.centered {
+        padding-bottom: 75px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .slide h2 {
+        margin-top: 70px;
+      }
+      .slide.centered h2 {
+        font-size: 70px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+      }
+      .slide,
+      .slide h2 {
+        color: #07244f;
+      }
+      .slide {
+        background: #eef7f1;
+        padding-top: 0;
+        padding-bottom: 0 !important;
+      }
+      .slide::after {
+        content: none;
+      }
+      .orange {
+        background: #df7f57;
+      }
+      .orange,
+      .orange h2 {
+        color: white;
+      }
+      .progress {
+        display: none !important;
+      }
+      .title-emoji {
+        font-size: 35px;
+        padding-left: 10px;
+      }
+      img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body class="shower list">
+    <header class="caption">
+      <h1>Shower Presentation Engine</h1>
+      <p>Yours Truly, Famous Inc.</p>
+    </header>
+
+    <section class="slide centered orange">
+      <h2 style="text-align: center">
+        Une application monorepo avec React et React-Native
+      </h2>
+      <p style="margin: 0"><b>React & React-Native Bordeaux Meetup</b></p>
+      <p style="font-size: 16px">Mai 2021</p>
+    </section>
+
+    <section class="slide grey-light">
+      <h2>Qui suis-je <span class="title-emoji">👋</span></h2>
+      <pre>
+        <code>&lt;Person</code>
+        <code>  fullName="<mark>Stéphane Richin</mark>"</code>
+        <code>  age={<mark>29</mark>}</code>
+        <code>  city="<mark>Lyon</mark>"</code>
+        <code>  company="<mark>Novaway</mark>"</code>
+        <code>  role="<mark>Lead front-end developper</mark>"</code>
+        <code>/&gt;</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>
+        Les problématiques d'une architecture multirepo
+        <span class="title-emoji">🙈</span>
+      </h2>
+      <ul>
+        <li class="next">Multiples installations/maintenances</li>
+        <li class="next">
+          Multiples configurations (linter, CI/CD, .env, etc.)
+        </li>
+        <li class="next">Potentiellement une grosse perte de temps</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>
+        Qu'est-ce qu'un monorepo
+        <span class="title-emoji">🤔</span>
+      </h2>
+      <figure>
+        <blockquote>
+          <p>
+            un monorepo est une stratégie de développement où le code de
+            plusieurs projets est stocké dans un seul et même repository
+          </p>
+        </blockquote>
+        <figcaption>
+          Wikipedia <span style="font-style: normal">❤️</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="slide" style="text-align: center">
+      <header
+        style="display: flex; justify-content: center; align-items: center"
+      >
+        <h2 style="margin-top: 20px; margin-bottom: 30px; margin-right: 5px">
+          Exemple avec
+        </h2>
+        <img
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclipground.com%2Fimages%2Freact-logo-png-7.png&f=1&nofb=1"
+          alt=""
+          width="50"
+        />
+      </header>
+      <img
+        src="./images/Screenshot_2021-05-05 facebook react.png"
+        alt="Package React du dépôt Github de Facebook"
+        style="max-width: 80%"
+      />
+    </section>
+
+    <section class="slide" style="text-align: center">
+      <header
+        style="display: flex; justify-content: center; align-items: center"
+      >
+        <h2 style="margin-top: 20px; margin-bottom: 30px; margin-right: 5px">
+          Exemple avec
+        </h2>
+        <img
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F02%2FBabel_Logo.svg%2F1024px-Babel_Logo.svg.png&f=1&nofb=1"
+          alt=""
+          width="100"
+        />
+      </header>
+      <img
+        src="./images/Screenshot_2021-05-05 babel babel.png"
+        alt="Package React du dépôt Github de Facebook"
+        style="max-width: 80%"
+      />
+    </section>
+
+    <section class="slide centered orange">
+      <h2>Les avantages de ce type d'architecture</h2>
+    </section>
+
+    <section class="slide">
+      <h2>
+        Pourquoi un monorepo ?
+        <span class="title-emoji">🥰</span>
+      </h2>
+      <ul>
+        <li class="next">Un seul environnement de développement</li>
+        <li class="next">Une seule structure</li>
+        <li class="next">Réduit la quantité de code répété</li>
+        <li class="next">
+          Le partage et la réutilisation de code sont infiniment plus faciles
+        </li>
+        <li class="next">
+          Le refactoring à grande échelle devient plus simple
+        </li>
+        <li class="next">
+          Pour une stack entièrement JavaScript l'avantage est décuplé : partage
+          de code entre le(s) client(s) web/natif et le serveur Node
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>
+        Pourquoi un monorepo ?
+        <span class="title-emoji">🥰</span>
+      </h2>
+      <ul>
+        <li>
+          Partage des configurations des différents outils (Jest, TypeScript,
+          ESLint, Prettier, etc.)
+        </li>
+        <li class="next">Gestion des dépendances plus simple</li>
+        <li class="next">Les commits multi-projets</li>
+        <li class="next">Une seule review</li>
+        <li class="next">Un team work hautement amélioré</li>
+      </ul>
+    </section>
+
+    <section class="slide centered orange" style="align-items: flex-start">
+      <h2>Les désavantages (titre à revoir)</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Quelques points d'attention <span class="title-emoji">📌</span></h2>
+      <ul>
+        <li class="next">Le dépôt peu devenir (très) gros</li>
+        <li class="next">
+          L'intégration d'un nouveau développeur peut être plus difficile
+        </li>
+        <li class="next">
+          Une culture parfois incompatible (par ex. entre les équipes back et
+          front)
+        </li>
+        <li class="next">
+          La mise en place d'un CI/CD n’est pas anodine à mettre en place
+        </li>
+        <li class="next">
+          Demande d'être plus rigoureux lors des revues de code
+        </li>
+        <li class="next">
+          Potentiellement un problème de sécurité avec l'accès à toute la
+          code-base
+        </li>
+        <li class="next">Limitations techniques du système de versionning</li>
+      </ul>
+    </section>
+
+    <section class="slide centered orange" style="align-items: flex-start">
+      <h2>Comment ça marche ?</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Les principaux outils <span class="title-emoji">⚙️</span></h2>
+      <ul>
+        <li class="next">
+          <b>yarn (v1)</b>
+          <ul>
+            <li>API Workspaces</li>
+            <li>
+              <em
+                >Workspaces are a new way to set up your package
+                architecture</em
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="next">
+          <b>lerna</b>
+          <ul>
+            <li>
+              <em
+                >A tool for managing JavaScript projects with multiple
+                packages</em
+              >
+            </li>
+            <li>
+              utilisé par Facebook (CRA & Jest), Babel, Strapi ou encore
+              Cloudfare
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Les principaux outils <span class="title-emoji">⚙️</span></h2>
+      <ul>
+        <li>
+          <b>nx</b>
+          <ul>
+            <li>
+              <em
+                >a suite of powerful, extensible dev tools to help you
+                architect, test, and build at any scale</em
+              >
+            </li>
+            <li>
+              basé sur <b>des plugins</b> (@nrwl/angular, @nrwl/node,
+              @nrwl/react, etc)
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide" style="display: flex; align-items: center">
+      <div style="max-width: 30%">
+        <img
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fheroku-blog-files.s3.amazonaws.com%2Fposts%2F1488416188-yarn-logo.png&f=1&nofb=1"
+          style="max-width: 70%"
+          alt=""
+        />
+        <h2 style="margin-top: 0">Yarn et l'API Workspaces</h2>
+      </div>
+      <div style="text-align: center">
+        <img
+          src="https://www.novaway.fr/uploads/media/graph_react_yarn.jpg"
+          style="max-width: 90%"
+        />
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Quelques règles <span class="title-emoji">🚀</span></h2>
+      <ul>
+        <li class="next">
+          Un fichier <em>package.json</em> doit être défini à la racine du
+          projet
+        </li>
+        <li class="next">
+          Le <em>package.json</em> devra contenir la clé <b>private</b> à
+          <b>true</b> ainsi que les différents <b>workspaces</b>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Quelques règles <span class="title-emoji">🚀</span></h2>
+      <pre>
+        <code>{</code>
+          <code>  "name": "my-app",</code>
+          <code>  "private": true,</code>
+          <code>  "workspaces": ["packages/admin", "packages/api", ...]</code>
+          <code>  // ou "workspaces": ["packages/*"]</code>
+        <code>}</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Quelques règles <span class="title-emoji">🚀</span></h2>
+      <ul>
+        <li>
+          Chaque <b>package</b> doit contenir également son propre
+          <em>package.json</em>
+        </li>
+        <li class="next">
+          Le <em>package.json</em> devra contenir les clés name et version afin
+          qu’il puisse être défini comme module du workspace
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Quelques règles <span class="title-emoji">🚀</span></h2>
+      <pre>
+        <code>{</code>
+          <code>  "name": "@my-app/ui",</code>
+          <code>  "version": "0.0.1",</code>
+          <code>  "dependencies": {,</code>
+          <code>    "@my-app/core": "0.0.1",</code>
+          <code>    ...</code>
+          <code>  }</code>
+        <code>}</code>
+      </pre>
+    </section>
+
+    <section
+      class="slide centered"
+      style="flex-direction: row; justify-content: space-between"
+    >
+      <h2>React et monorepo <span class="title-emoji">😏</span></h2>
+      <div style="text-align: center">
+        <img
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclipground.com%2Fimages%2Freact-logo-png-7.png&f=1&nofb=1"
+          alt="Logo React"
+          style="max-width: 80%"
+        />
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>React et le multi-plateforme <span class="title-emoji">🚀</span></h2>
+      <p>
+        Dans le cadre d'une application React, une architecture
+        <b>monorepo</b> va permettre de partager et de maintenir plus facilement
+        une ou plusieurs vue entre les différents packages (en incluant
+        <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank"
+          >les hooks</a
+        >, par exemple)
+      </p>
+    </section>
+
+    <section class="slide">
+      <h2>Un exemple ?</h2>
+      <p>TODO</p>
+    </section>
+
+    <section class="slide">
+      <h2>Exemple d'architecture <span class="title-emoji">🥰</span></h2>
+      <div
+        style="
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+        "
+      >
+        <pre>
+          <code>- <mark>packages</mark></code>
+            <code>  - mobile</code>
+            <code>  - storybook</code>
+            <code>  - ui</code>
+            <code>  - web</code>
+            <code>  ...</code>
+        </pre>
+        <span>=></span>
+        <span>
+          <img
+            src="https://www.novaway.fr/uploads/media/pasted%20image%200.png"
+            alt=""
+            style="max-height: 350px"
+          />
+        </span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>
+        Quelques ressources sur le sujet <span class="title-emoji">📖</span>
+      </h2>
+      <ul>
+        <li>
+          <a
+            href="https://dev.to/brunolemos/tutorial-100-code-sharing-between-ios-android--web-using-react-native-web-andmonorepo-4pej"
+            >How to share code between iOS, Android & Web using React Native,
+            react-native-web and monorepo</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://moduscreate.com/blog/setting-up-a-monorepo-react-app-with-yarn/"
+            >Setting Up A Monorepo React App with Yarn</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://medium.com/@luisvieira_gmr/building-large-scale-react-applications-in-a-monorepo-91cd4637c131"
+            >Building large scale react applications in a monorepo</a
+          >
+        </li>
+        <li>
+          <a href="https://www.novaway.fr/blog/tech/creer-monorepo-avec-react"
+            >Créer un monorepo avec React 🇨🇵</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://medium.com/@simonpeyou/de-lint%C3%A9r%C3%AAt-et-l-usage-d-un-mono-repository-dans-une-startup-fd461bb1760d"
+            >De l’intérêt et l’usage d’un mono-repository dans une startup 🇨🇵</a
+          >
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide centered">
+      <h2>Merci <span class="title-emojii">🤗</span></h2>
+    </section>
+
+    <footer class="badge">
+      <a href="https://github.com/shower/shower">Fork me on GitHub</a>
+    </footer>
+
+    <div class="progress"></div>
+
+    <script src="node_modules/@shower/core/dist/shower.js"></script>
+    <!-- Copyright © 2021 Yours Truly, Famous Inc. -->
+  </body>
+</html>
