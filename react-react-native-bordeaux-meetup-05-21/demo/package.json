@@ -45,5 +45,8 @@
     "*.{js,jsx,ts,tsx,json,html,md,css}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "react-query": "^3.16.0"
   }
 }

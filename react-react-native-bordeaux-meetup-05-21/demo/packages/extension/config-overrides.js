@@ -20,6 +20,13 @@ module.exports = function override(config, env) {
     require.resolve('babel-plugin-react-native-web'),
   )
 
+  config.resolve.extensions = [
+    '.extension.js',
+    '.extension.ts',
+    '.extension.tsx',
+    ...config.resolve.extensions,
+  ]
+
   config.plugins.push(
     new webpack.DefinePlugin({ __DEV__: env !== 'production' }),
   )
