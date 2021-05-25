@@ -8,7 +8,8 @@
     ]
   },
   "scripts": {
-    "extension": "yarn workspace @my-app/extension start",
+    "extension:start": "yarn workspace @my-app/extension start",
+    "extension:build": "yarn workspace @my-app/extension build",
     "android": "yarn workspace @my-app/mobile android",
     "ios": "yarn workspace @my-app/mobile ios",
     "studio": "yarn workspace @my-app/mobile studio",

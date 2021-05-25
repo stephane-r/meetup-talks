@@ -27,7 +27,7 @@ export const Movies = () => {
 
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-      {data.results.map((movie: uncknow, index) => (
+      {data.results.map((movie: any, index: number) => (
         <View key={movie.title} style={{ padding: 10 }}>
           <Image
             source={{ uri: PICTURES[index] }}
