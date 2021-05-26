@@ -401,7 +401,31 @@
         Workspaces : les commandes de base <span class="title-emoji">🚀</span>
       </h2>
       <ul>
-        <li>TODO</li>
+        <li class="next">
+          Lancer un script d'un package :
+          <ul>
+            <li><b>yarn workspace @my-app/web start</b></li>
+          </ul>
+        </li>
+        <li class="next">
+          Ajouter ou supprimer une dépendence a un package :
+          <ul>
+            <li><b>yarn workspace @my-app/web add/remove react-native</b></li>
+          </ul>
+        </li>
+        <li class="next">
+          Ajouter ou supprimer une dépendence global au workspace :
+          <ul>
+            <li><b>yarn add/remove react-native -W</b></li>
+          </ul>
+        </li>
+        <li class="next">
+          Il est possible de créer un script npm depuis le package.json du
+          workspace
+          <ul>
+            <li><b>yarn web:start</b></li>
+          </ul>
+        </li>
       </ul>
     </section>
 
