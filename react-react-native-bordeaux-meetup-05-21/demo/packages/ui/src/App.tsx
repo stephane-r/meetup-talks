@@ -8,7 +8,7 @@ import {
   View,
   Button,
 } from 'react-native'
-import { AppHeader } from './AppHeader'
+import { Header } from './Header'
 import { Movies } from './Movies'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -22,7 +22,7 @@ export function App() {
         style={styles.scrollView}
       >
         <View style={styles.body}>
-          <AppHeader />
+          <Header />
           <View style={{ padding: 10 }}>
             <Movies />
           </View>

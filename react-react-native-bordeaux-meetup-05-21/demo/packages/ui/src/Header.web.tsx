@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-export function AppHeader() {
+export function Header() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to extension</Text>
+      <Text style={styles.text}>Welcome to web repo</Text>
     </View>
   )
 }

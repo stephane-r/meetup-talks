@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 export function AppHeader() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to web</Text>
+      <Text style={styles.text}>Welcome to extension repo</Text>
     </View>
   )
 }

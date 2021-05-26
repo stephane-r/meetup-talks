@@ -1,14 +1,15 @@
 import React from 'react'
-import { Dimensions, Image, Platform, Text, View } from 'react-native'
+import { Button, Dimensions, Image, Platform, Text, View } from 'react-native'
 import { useQuery } from 'react-query'
+import { Spacer } from './Spacer'
 
 const PICTURES = [
-  'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcassiopee1.e-monsite.com%2Fmedias%2Falbum%2Favatar.jpg&f=1&nofb=1',
-  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffr.web.img3.acsta.net%2Fpictures%2F210%2F380%2F21038062_20130907214845845.jpg&f=1&nofb=1',
-  'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ffolkr.fr%2Fwp-content%2Fuploads%2F2018%2F01%2Ftop-20-affiches-de-films-2017-folkr-Dunkerque.jpg&f=1&nofb=1',
-  'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ffr.web.img4.acsta.net%2Fpictures%2F18%2F05%2F16%2F12%2F23%2F1533322.jpg&f=1&nofb=1',
-  'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftatakiki.t.a.pic.centerblog.net%2Fo%2F9c6e4f7b.jpg&f=1&nofb=1',
-  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffr.web.img4.acsta.net%2Fpictures%2F15%2F12%2F15%2F09%2F36%2F280269.jpg&f=1&nofb=1',
+  'https://fr.web.img2.acsta.net/pictures/20/08/03/12/15/2118693.jpg',
+  'https://fr.web.img4.acsta.net/c_310_420/pictures/19/03/05/14/47/4778578.jpg',
+  'https://fr.web.img6.acsta.net/medias/nmedia/18/78/95/70/19485155.jpg',
+  'https://fr.web.img4.acsta.net/c_310_420/pictures/19/11/14/15/32/1956274.jpg',
+  'https://fr.web.img6.acsta.net/c_310_420/medias/nmedia/18/68/10/09/19186143.jpg',
+  'https://fr.web.img3.acsta.net/c_310_420/pictures/21/05/12/10/00/4510528.jpg',
 ]
 
 export const Movies = () => {
@@ -32,12 +33,18 @@ export const Movies = () => {
           <Image
             source={{ uri: PICTURES[index] }}
             style={{
-              width: isWeb ? 200 : Dimensions.get('window').width / 2 - 30,
-              height: 200,
-              marginBottom: 10,
+              width: isWeb ? 300 : Dimensions.get('window').width / 2 - 30,
+              height: isWeb ? 400 : 200,
             }}
           />
-          <Text>{movie.title}</Text>
+          <Spacer height={15} />
+          <Text style={{ fontSize: 24, fontWeight: 600 }}>{movie.title}</Text>
+          <Spacer height={10} />
+          <Text>By {movie.producer}</Text>
+          <Spacer height={10} />
+          <Text numberOfLines={3}>{movie.opening_crawl}</Text>
+          <Spacer height={15} />
+          <Button title="Movie detail" onPress={() => console.log('test')} />
         </View>
       ))}
     </View>
