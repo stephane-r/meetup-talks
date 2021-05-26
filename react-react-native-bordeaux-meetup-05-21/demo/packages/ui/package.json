@@ -10,5 +10,6 @@
     "@types/react-native": "*",
     "react": "*",
     "react-native": "*"
-  }
+  },
+  "dependencies": {}
 }

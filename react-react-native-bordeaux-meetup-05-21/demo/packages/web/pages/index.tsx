@@ -1,12 +1,8 @@
-import { App } from '@my-app/ui/src/App'
-// import { View, Text } from 'react-native'
+import { MoviesScreen as UiMoviesScreen } from '@my-app/ui/src/MoviesScreen'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-// export default App
+// const queryClient = new QueryClient()
 
-// const App = () => (
-//   <View>
-//     <Text>Hello !</Text>
-//   </View>
-// )
+const MoviesScreen = () => <UiMoviesScreen />
 
-export default App
+export default MoviesScreen

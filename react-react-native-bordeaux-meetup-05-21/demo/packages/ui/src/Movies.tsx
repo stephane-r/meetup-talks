@@ -1,5 +1,13 @@
 import React from 'react'
-import { Button, Dimensions, Image, Platform, Text, View } from 'react-native'
+import {
+  Button,
+  Dimensions,
+  Image,
+  Platform,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native'
 import { useQuery } from 'react-query'
 import { Spacer } from './Spacer'
 
@@ -26,19 +34,27 @@ export const Movies = () => {
     return <Text>👀</Text>
   }
 
+  const mobileColumnWidth = Dimensions.get('window').width / 2 - 10
+
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
       {data.results.map((movie: any, index: number) => (
-        <View key={movie.title} style={{ padding: 10 }}>
+        <View
+          key={movie.title}
+          style={{
+            padding: 10,
+            width: isWeb ? 'auto' : mobileColumnWidth,
+          }}
+        >
           <Image
             source={{ uri: PICTURES[index] }}
             style={{
-              width: isWeb ? 300 : Dimensions.get('window').width / 2 - 30,
+              width: isWeb ? 300 : mobileColumnWidth - 20,
               height: isWeb ? 400 : 200,
             }}
           />
           <Spacer height={15} />
-          <Text style={{ fontSize: 24, fontWeight: 600 }}>{movie.title}</Text>
+          <Text style={{ fontSize: 24, fontWeight: '600' }}>{movie.title}</Text>
           <Spacer height={10} />
           <Text>By {movie.producer}</Text>
           <Spacer height={10} />
@@ -53,6 +69,8 @@ export const Movies = () => {
 
 const usePlatform = () => {
   const isWeb = Platform.OS === 'web'
+  const isWebMobile = isWeb && Dimensions.get('window').width < 641
+  const isWebDesktop = isWeb && Dimensions.get('window').width > 1200
   const isWindows = Platform.OS === 'windows'
   const isAndroid = Platform.OS === 'android'
   const isIos = Platform.OS === 'ios'
@@ -62,6 +80,7 @@ const usePlatform = () => {
 
   return {
     isWeb,
+    isWebMobile,
     isWindows,
     isAndroid,
     isIos,
