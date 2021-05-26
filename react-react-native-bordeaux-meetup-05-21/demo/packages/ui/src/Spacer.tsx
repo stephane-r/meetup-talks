@@ -5,6 +5,4 @@ interface Props {
   height: number
 }
 
-export const Spacer: React.FC = ({ height }: Props) => (
-  <View style={{ height }} />
-)
+export const Spacer = ({ height }: Props) => <View style={{ height }} />

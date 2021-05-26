@@ -1,13 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-export function AppHeader() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Welcome to extension repo</Text>
-    </View>
-  )
-}
+export const Header = () => (
+  <View style={styles.container}>
+    <Text style={styles.text}>Welcome to extension repo</Text>
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {

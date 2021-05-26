@@ -1,20 +1,16 @@
 import React from 'react'
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-} from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import { Header } from './Header'
 import { Movies } from './Movies'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 const queryClient = new QueryClient()
 
-export const App = ({ children }) => (
+interface Props {
+  children: React.ReactChild | React.ReactChild[]
+}
+
+export const App = ({ children }: Props) => (
   <QueryClientProvider client={queryClient}>
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"

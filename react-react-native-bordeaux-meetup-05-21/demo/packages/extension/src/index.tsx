@@ -1,10 +1,10 @@
 import React from 'react'
 import { AppRegistry } from 'react-native'
-import { App } from '@my-app/ui/src/App'
+import { MoviesScreen } from '@my-app/ui/src/MoviesScreen'
 
 const Test = () => (
   <div style={{ width: 460, height: 200 }}>
-    <App />
+    <MoviesScreen />
   </div>
 )
 
