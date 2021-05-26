@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native'
 import { useQuery } from 'react-query'
+import { Link } from './Link'
 import { Spacer } from './Spacer'
 
 const PICTURES = [
@@ -21,7 +22,7 @@ const PICTURES = [
 ]
 
 export const Movies = () => {
-  const { isWeb } = usePlatform()
+  const { isWeb, isWebMobile } = usePlatform()
   const { data, isLoading, error } = useQuery('movies', () =>
     fetch('https://swapi.dev/api/films/').then((response) => response.json()),
   )
@@ -36,38 +37,68 @@ export const Movies = () => {
 
   const mobileColumnWidth = Dimensions.get('window').width / 2 - 10
 
+  const getPictureSize = () => {
+    switch (true) {
+      case isWeb && !isWebMobile:
+        return {
+          width: 300,
+          height: 400,
+        }
+      case isWebMobile:
+        return {
+          width: 150,
+          height: 150,
+          marginRight: 10,
+        }
+      default:
+        return {
+          width: mobileColumnWidth - 20,
+          height: 200,
+        }
+    }
+  }
+
   return (
-    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+    <View
+      style={{
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+      }}
+    >
       {data.results.map((movie: any, index: number) => (
         <View
           key={movie.title}
           style={{
             padding: 10,
             width: isWeb ? 'auto' : mobileColumnWidth,
+            flexDirection: isWebMobile ? 'row' : 'column',
           }}
         >
           <Image
             source={{ uri: PICTURES[index] }}
             style={{
-              width: isWeb ? 300 : mobileColumnWidth - 20,
-              height: isWeb ? 400 : 200,
+              ...getPictureSize(),
             }}
           />
-          <Spacer height={15} />
-          <Text style={{ fontSize: 24, fontWeight: '600' }}>{movie.title}</Text>
-          <Spacer height={10} />
-          <Text>By {movie.producer}</Text>
-          <Spacer height={10} />
-          <Text numberOfLines={3}>{movie.opening_crawl}</Text>
-          <Spacer height={15} />
-          <Button title="Movie detail" onPress={() => console.log('test')} />
+          <View>
+            {!isWebMobile && <Spacer height={15} />}
+            <Text style={{ fontSize: 24, fontWeight: '600' }}>
+              {movie.title}
+            </Text>
+            <Spacer height={10} />
+            <Text>By {movie.producer}</Text>
+            <Spacer height={10} />
+            <Text numberOfLines={3}>{movie.opening_crawl}</Text>
+            <Spacer height={15} />
+            <Link slug={movie.url} />
+          </View>
         </View>
       ))}
     </View>
   )
 }
 
-const usePlatform = () => {
+export const usePlatform = () => {
   const isWeb = Platform.OS === 'web'
   const isWebMobile = isWeb && Dimensions.get('window').width < 641
   const isWebDesktop = isWeb && Dimensions.get('window').width > 1200

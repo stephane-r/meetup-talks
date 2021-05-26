@@ -7,18 +7,19 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 const queryClient = new QueryClient()
 
 interface Props {
+  showHeader?: boolean
   children: React.ReactChild | React.ReactChild[]
 }
 
-export const App = ({ children }: Props) => (
+export const App = ({ showHeader = true, children }: Props) => (
   <QueryClientProvider client={queryClient}>
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
       style={styles.scrollView}
     >
       <View style={styles.body}>
-        <Header />
-        <View style={{ padding: 10 }}>{children}</View>
+        {showHeader && <Header />}
+        <View style={{ padding: showHeader ? 10 : 0 }}>{children}</View>
       </View>
     </ScrollView>
   </QueryClientProvider>
