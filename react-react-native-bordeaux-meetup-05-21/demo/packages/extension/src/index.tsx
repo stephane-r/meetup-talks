@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppRegistry } from 'react-native'
-import { MoviesScreen } from '@my-app/ui/src/MoviesScreen'
+import { MoviesScreen } from '@my-app/ui/src/screens/Movies'
 
 const App = () => (
   <div style={{ width: 460, height: 200 }}>

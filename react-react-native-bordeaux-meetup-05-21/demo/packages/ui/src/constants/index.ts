@@ -1,0 +1,21 @@
+export const LINK_LABEL = 'Movie detail'
+export const PICTURES = [
+  'https://fr.web.img2.acsta.net/pictures/20/08/03/12/15/2118693.jpg',
+  'https://fr.web.img4.acsta.net/c_310_420/pictures/19/03/05/14/47/4778578.jpg',
+  'https://fr.web.img6.acsta.net/medias/nmedia/18/78/95/70/19485155.jpg',
+  'https://fr.web.img4.acsta.net/c_310_420/pictures/19/11/14/15/32/1956274.jpg',
+  'https://fr.web.img6.acsta.net/c_310_420/medias/nmedia/18/68/10/09/19186143.jpg',
+  'https://fr.web.img3.acsta.net/c_310_420/pictures/21/05/12/10/00/4510528.jpg',
+  'https://fr.web.img5.acsta.net/c_310_420/pictures/18/11/29/16/57/0851659.jpg',
+  'https://fr.web.img6.acsta.net/c_310_420/pictures/20/06/25/16/30/0065268.jpg',
+  'https://fr.web.img5.acsta.net/c_310_420/pictures/14/01/30/18/42/559266.jpg',
+  'https://fr.web.img6.acsta.net/c_310_420/pictures/20/01/31/11/16/5333556.jpg',
+  'https://fr.web.img5.acsta.net/c_310_420/pictures/15/06/08/12/13/510747.jpg',
+  'https://fr.web.img6.acsta.net/pictures/17/01/06/12/46/346064.jpg',
+  'https://fr.web.img6.acsta.net/c_310_420/medias/nmedia/18/63/97/89/18949761.jpg',
+  'https://fr.web.img2.acsta.net/c_310_420/pictures/21/05/06/11/39/3560897.jpg',
+  'https://fr.web.img6.acsta.net/c_310_420/pictures/19/07/31/09/12/1422182.jpg',
+  'https://fr.web.img6.acsta.net/c_310_420/pictures/20/02/10/17/16/0746079.jpg',
+  'https://fr.web.img6.acsta.net/c_310_420/pictures/19/11/25/10/51/5092178.jpg',
+  'https://fr.web.img4.acsta.net/c_310_420/pictures/16/10/19/14/33/069648.jpg',
+]

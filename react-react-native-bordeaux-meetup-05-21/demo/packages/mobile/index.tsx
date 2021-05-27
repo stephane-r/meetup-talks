@@ -3,9 +3,9 @@ import React from 'react'
 import { AppRegistry } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { App as UiApp } from '@my-app/ui/src/App'
-import { MoviesScreen } from '@my-app/ui/src/MoviesScreen'
-import { MovieScreen } from '@my-app/ui/src/MovieScreen'
+import { App as UiApp } from '@my-app/ui/src/components/App'
+import { MoviesScreen } from '@my-app/ui/src/screens/Movies'
+import { MovieScreen } from '@my-app/ui/src/screens/Movie'
 import { name as appName } from './app.json'
 
 const Stack = createStackNavigator()

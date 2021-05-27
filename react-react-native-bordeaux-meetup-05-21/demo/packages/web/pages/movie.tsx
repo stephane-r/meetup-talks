@@ -1,4 +1,4 @@
-import { MovieScreen as UiMovieScreen } from '@my-app/ui/src/MovieScreen'
+import { MovieScreen as UiMovieScreen } from '@my-app/ui/src/screens/Movie'
 import { useRouter } from 'next/router'
 
 const MovieScreen = () => {

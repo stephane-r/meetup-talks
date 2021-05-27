@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Text } from 'react-native'
-import { App } from './App'
-import { Movie } from './Movie'
-import { usePlatform } from './Movies'
+import { App } from '../components/App'
+import { usePlatform } from '../hooks/usePlatform'
+import { Movie } from '../components/Movie'
 
 export const MovieScreen = (props) => {
   const { isWeb } = usePlatform()
