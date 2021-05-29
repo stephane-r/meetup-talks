@@ -2,9 +2,9 @@ import React from 'react'
 import { Dimensions, Image, Text, View } from 'react-native'
 import { useQuery } from 'react-query'
 import { Spacer } from './Spacer'
+import { Title } from './Title'
 
 export const Movie = ({ slug }) => {
-  console.log(slug)
   const { data, isLoading, error } = useQuery('movie', () =>
     fetch(slug).then((response) => response.json()),
   )
@@ -27,7 +27,7 @@ export const Movie = ({ slug }) => {
         style={{ width: Dimensions.get('window').width, height: 200 }}
       />
       <View style={{ padding: 10 }}>
-        <Text style={{ fontSize: 24, fontWeight: '600' }}>{data.title}</Text>
+        <Title title={data.title} />
         <Spacer height={10} />
         <Text>Director : {data.director}</Text>
         <Spacer height={10} />

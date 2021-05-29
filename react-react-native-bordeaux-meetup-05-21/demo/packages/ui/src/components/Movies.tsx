@@ -41,7 +41,10 @@ export const Movies = () => {
     >
       {[...data.results, ...data.results, ...data.results].map(
         (movie: any, index: number) => (
-          <Card card={{ ...movie, picture: PICTURES[index] }} />
+          <Card
+            key={`${movie.title}-${index}`}
+            card={{ ...movie, picture: PICTURES[index] }}
+          />
         ),
       )}
     </View>
